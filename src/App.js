@@ -1,6 +1,4 @@
-import Input from './components/Input';
-import Button from './components/Button';
-import { Container, Content, Row } from './styles';
+import { Container, Content, Row, Input, Button, SpecialButton } from './styles';
 import { useState } from 'react';
 
 const App = () => {
@@ -39,7 +37,7 @@ const App = () => {
         case '/':
           result = Number(firstNumber) / Number(currentNumber);
           break;
-        case '*':
+        case 'X':
           result = Number(firstNumber) * Number(currentNumber);
           break;
         default:
@@ -54,37 +52,37 @@ const App = () => {
   return (
     <Container>
       <Content>
-        <Input value={currentNumber} />
+        <Input value={currentNumber} readOnly />
         <Row>
-          <Button label="X" onClick={() => handleSetOperation('X')} />
-          <Button label="/" onClick={() => handleSetOperation('/')} />
-          <Button label="C" onClick={handleOnClear} />
-          <Button label="*" onClick={() => handleSetOperation('*')} />
+          <Button onClick={() => handleSetOperation('X')}>X</Button>
+          <Button onClick={() => handleSetOperation('/')}>/</Button>
+          <SpecialButton onClick={handleOnClear}>C</SpecialButton>
+          <Button onClick={() => handleSetOperation('*')}>*</Button>
           
         </Row>
-        
+
         <Row>
-          <Button label="7" onClick={() => handleAddNumber('7')} />
-          <Button label="8" onClick={() => handleAddNumber('8')} />
-          <Button label="9" onClick={() => handleAddNumber('9')} />
-          <Button label="-" onClick={() => handleSetOperation('-')} />
+          <Button onClick={() => handleAddNumber('7')}>7</Button>
+          <Button onClick={() => handleAddNumber('8')}>8</Button>
+          <Button onClick={() => handleAddNumber('9')}>9</Button>
+          <Button onClick={() => handleSetOperation('-')}>-</Button>
           
         </Row>
-        
+
         <Row>
-          <Button label="4" onClick={() => handleAddNumber('4')} />
-          <Button label="5" onClick={() => handleAddNumber('5')} />
-          <Button label="6" onClick={() => handleAddNumber('6')} />
-          <Button label="+" onClick={() => handleSetOperation('+')} />
+          <Button onClick={() => handleAddNumber('4')}>4</Button>
+          <Button onClick={() => handleAddNumber('5')}>5</Button>
+          <Button onClick={() => handleAddNumber('6')}>6</Button>
+          <Button onClick={() => handleSetOperation('+')}>+</Button>
         </Row>
-        
+
         <Row>
-          <Button label="1" onClick={() => handleAddNumber('1')} />
-          <Button label="2" onClick={() => handleAddNumber('2')} />
-          <Button label="3" onClick={() => handleAddNumber('3')} />
-          <Button label="=" onClick={handleEqual} />
+          <Button onClick={() => handleAddNumber('1')}>1</Button>
+          <Button onClick={() => handleAddNumber('2')}>2</Button>
+          <Button onClick={() => handleAddNumber('3')}>3</Button>
+          <SpecialButton onClick={handleEqual}>=</SpecialButton>
         </Row>
-      </Content> 
+      </Content>
     </Container>
   );
 };
